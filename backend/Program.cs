@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-var MyAllowSpecificOrigins = "AllowAll";
+var allowAllOrigins = "AllowAll";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(options => {
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
+    options.AddPolicy(name: allowAllOrigins,
                       policy =>
                       {
                           policy.WithOrigins("*");
@@ -48,7 +48,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(allowAllOrigins);
 
 app.UseAuthorization();
 
